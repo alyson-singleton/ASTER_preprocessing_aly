@@ -30,7 +30,7 @@ def aster_bands_present_filter(collection):
     ee.Filter.listContains('ORIGINAL_BANDS_PRESENT', 'B13')
 ))
 
-def aster_preprocessing(geom):
+def aster_preprocessing(geom, collection):
   """
   Takes a geometry (ee.ComputedObject, ee.FeatureCollection, or ee.Geometry).
   Collects ASTER satellite imagery that intersects the geometry and
@@ -42,7 +42,7 @@ def aster_preprocessing(geom):
   the crs and crs_transform metadata of the first image in the
   ImageCollection that intersects the geometry.
   """
-  coll = ee.ImageCollection("ASTER/AST_L1T_003")
+  coll = collection
   coll = coll.filterBounds(geom)
   coll = aster_bands_present_filter(coll)
   crs = coll.first().select('B01').projection().getInfo()['crs']
