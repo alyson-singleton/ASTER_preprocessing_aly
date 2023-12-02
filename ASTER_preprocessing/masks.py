@@ -92,12 +92,12 @@ def aster_cloud_mask(image):
   Returns a masked image.
   """
   img = ac_filt1(image)
-  img = ac_filt2(img)
+  # img = ac_filt2(img)
   img = ac_filt3(img)
-  img = ac_filt4(img)
+  #img = ac_filt4(img)
   img = ac_filt5(img)
   img = ac_filt6(img)
-  img = ac_filt7(img)
+  #img = ac_filt7(img)
   # The seven filters identify pixels that ARE clouds and mask the rest.
   # ee.Image.unmask() replaces the masked pixels of an image with a constant value.
   # The .eq() filter returns a binary mask identifying which pixels match the
