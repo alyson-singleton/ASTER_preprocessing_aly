@@ -27,10 +27,10 @@ def aster_bands_present_filter(collection):
     # ee.Filter.listContains('ORIGINAL_BANDS_PRESENT', 'B07'),
     # ee.Filter.listContains('ORIGINAL_BANDS_PRESENT', 'B08'),
     # ee.Filter.listContains('ORIGINAL_BANDS_PRESENT', 'B09'),
-    ee.Filter.listContains('ORIGINAL_BANDS_PRESENT', 'B10')
-    ee.Filter.listContains('ORIGINAL_BANDS_PRESENT', 'B11')
-    ee.Filter.listContains('ORIGINAL_BANDS_PRESENT', 'B12')
-    ee.Filter.listContains('ORIGINAL_BANDS_PRESENT', 'B13')
+    ee.Filter.listContains('ORIGINAL_BANDS_PRESENT', 'B10'),
+    ee.Filter.listContains('ORIGINAL_BANDS_PRESENT', 'B11'),
+    ee.Filter.listContains('ORIGINAL_BANDS_PRESENT', 'B12'),
+    ee.Filter.listContains('ORIGINAL_BANDS_PRESENT', 'B13'),
     ee.Filter.listContains('ORIGINAL_BANDS_PRESENT', 'B14')
 ))
 
