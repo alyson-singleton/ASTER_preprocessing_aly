@@ -41,7 +41,7 @@ def aster_reflectance(image):
   irradiance = [1845.99, 1555.74, 1119.47, 231.25, 79.81, 74.99, 68.66, 59.74, 56.92]
 
   reflectance = image \
-        .select('B01', 'B02', 'B3N', 'B04', 'B05', 'B06', 'B07', 'B08', 'B09') \
+        .select('B01', 'B02', 'B3N') \ #, 'B04', 'B05', 'B06', 'B07', 'B08', 'B09') \
         .multiply(reflectanceFactor) \
         .divide(irradiance)
 
