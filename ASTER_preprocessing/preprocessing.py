@@ -52,6 +52,6 @@ def aster_preprocessing(geom, collection):
   coll = coll.map(aster_brightness_temp)
   coll = coll.map(water_mask)
   coll = coll.map(aster_cloud_mask)
-  coll = coll.map(aster_snow_mask)
+  # coll = coll.map(aster_snow_mask)
   coll = coll.median().clip(geom)
   return {'imagery': coll, 'crs': crs, 'transform': transform}
