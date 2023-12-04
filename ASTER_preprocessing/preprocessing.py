@@ -58,5 +58,5 @@ def aster_preprocessing(geom, collection):
   coll = coll.map(aster_cloud_mask)
   # coll = coll.map(aster_snow_mask)
   # coll = coll.median().clip(geom)
-  coll = coll.clip(geom)
+  coll = coll..mosaic()
   return {'imagery': coll, 'crs': crs, 'transform': transform}
