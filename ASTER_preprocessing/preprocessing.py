@@ -51,12 +51,12 @@ def aster_preprocessing(geom, collection):
   coll = aster_bands_present_filter(coll)
   crs = coll.first().select('B01').projection().getInfo()['crs']
   transform = coll.first().select('B01').projection().getInfo()['transform']
-  # coll = coll.map(aster_radiance)
+  coll = coll.map(aster_radiance)
   coll = coll.map(aster_reflectance)
   coll = coll.map(aster_brightness_temp)
   coll = coll.map(water_mask)
   coll = coll.map(aster_cloud_mask)
   # coll = coll.map(aster_snow_mask)
-  # coll = coll.median().clip(geom)
-  coll = coll.mosaic()
+  coll = coll.median().clip(geom)
+  #coll = coll.mosaic()
   return {'imagery': coll, 'crs': crs, 'transform': transform}
