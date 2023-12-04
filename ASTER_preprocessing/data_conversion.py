@@ -77,7 +77,7 @@ def aster_data_conversion(image):
   digital number to top-of-atmosphere reflectance (bands 1 - 9) and 
   at-satellite brightness temperature (bands 10 - 14).
   """
-  img = aster_radiance(image)
+  #img = aster_radiance(image)
   img = aster_reflectance(img)
   img = aster_brightness_temp_all_tir(img)
   return img
