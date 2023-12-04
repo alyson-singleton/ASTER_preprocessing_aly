@@ -6,7 +6,7 @@ def aster_radiance(image):
   Takes an ASTER image with pixel values in DN (as stored by Googel Earth Engine).
   Converts DN to at-sensor radiance across all bands.
   """
-  image = image.select('B01', 'B02', 'B3N', 'B10', 'B11', 'B12', 'B13', 'B14')
+  #image = image.select('B01', 'B02', 'B3N', 'B10', 'B11', 'B12', 'B13', 'B14')
   coefficients = ee.ImageCollection(
         image.bandNames().map(lambda band: ee.Image(image.getNumber(ee.String('GAIN_COEFFICIENT_').cat(band))).float())
     ).toBands().rename(image.bandNames())
@@ -39,7 +39,8 @@ def aster_reflectance(image):
         {'earthSunDistance': earthSunDistance, 'sunZen': sunZen, 'pi': 3.14159265359}
     )
 
-  irradiance = [1845.99, 1555.74, 1119.47, 231.25, 79.81, 74.99, 68.66, 59.74, 56.92]
+  #irradiance = [1845.99, 1555.74, 1119.47, 231.25, 79.81, 74.99, 68.66, 59.74, 56.92]
+  irradiance = [1845.99, 1555.74, 1119.47]
 
   reflectance = image \
         .select('B01', 'B02', 'B3N').multiply(reflectanceFactor).divide(irradiance)
