@@ -10,7 +10,7 @@ def aster_radiance(image):
         image.bandNames().map(lambda band: ee.Image(image.getNumber(ee.String('GAIN_COEFFICIENT_').cat(band))).float())
     ).toBands().rename(image.bandNames())
 
-  radiance = image.subtract(1).multiply(coefficients)
+  radiance = image.select('B01', 'B02', 'B3N').subtract(1).multiply(coefficients)
 
   return image.addBands(radiance, None, True)
 
@@ -77,7 +77,7 @@ def aster_data_conversion(image):
   digital number to top-of-atmosphere reflectance (bands 1 - 9) and 
   at-satellite brightness temperature (bands 10 - 14).
   """
-  #img = aster_radiance(image)
+  img = aster_radiance(image)
   img = aster_reflectance(img)
   img = aster_brightness_temp_all_tir(img)
   return img
