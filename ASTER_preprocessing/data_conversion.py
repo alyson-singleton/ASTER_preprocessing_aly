@@ -6,11 +6,12 @@ def aster_radiance(image):
   Takes an ASTER image with pixel values in DN (as stored by Googel Earth Engine).
   Converts DN to at-sensor radiance across all bands.
   """
+  image = image.select('B01', 'B02', 'B3N')
   coefficients = ee.ImageCollection(
         image.bandNames().map(lambda band: ee.Image(image.getNumber(ee.String('GAIN_COEFFICIENT_').cat(band))).float())
     ).toBands().rename(image.bandNames())
 
-  radiance = image.select('B01', 'B02', 'B3N').subtract(1).multiply(coefficients)
+  radiance = image.subtract(1).multiply(coefficients)
 
   return image.addBands(radiance, None, True)
 
